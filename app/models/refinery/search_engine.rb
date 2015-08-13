@@ -13,7 +13,7 @@ module Refinery
       Rails.logger.info "offset #{offset},  page #{page}, per #{per}"
 
       Refinery.searchable_models.each do |model|
-        results << model.with_query(query)
+        results << model.live.with_query(query)
       end if query.present?
 
       count = results.flatten.count
